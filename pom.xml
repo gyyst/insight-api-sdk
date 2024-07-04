@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.gitee.awearaxn</groupId>
     <artifactId>insight-api-sdk</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>insight-api-sdk</name>
     <description>insight-api-sdk</description>
     <properties>
