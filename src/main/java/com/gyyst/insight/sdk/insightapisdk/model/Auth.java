@@ -9,26 +9,17 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author gyyst
- * @Description
- * @Create by 2023/2/3 17:22
- */
+
 @Data
 @AllArgsConstructor
-public class Auth {
-
+public class Auth implements Cloneable {
     private static final String ACCESS_KEY = "accessKey";
     private static final String SIGN = "sign";
     private static final String NONCE = "nonce";
     private static final String TIME_STAMP = "timeStamp";
-
     public Map<String, String> headers = new HashMap<>();
-
     private String accessKey;
-
     private String secretKey;
-
     private String sign;
     /**
      * 随机数
@@ -49,6 +40,11 @@ public class Auth {
         if (StrUtil.isBlank(accessKey)) {
             throw new IllegalArgumentException("empty key");
         }
+        return new Auth(accessKey, secretKey);
+    }
+
+    @Override
+    public Auth clone() throws CloneNotSupportedException {
         return new Auth(accessKey, secretKey);
     }
 

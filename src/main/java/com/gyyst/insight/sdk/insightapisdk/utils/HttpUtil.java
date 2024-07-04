@@ -12,14 +12,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-/**
- * @author gyyst
- * @Description
- * @Create by 2023/2/3 20:22
- */
 
 public class HttpUtil {
     private static final String SERVER_ADDRESS = "https://oarfish-glad-pony.ngrok-free.app/api/invoker/v1";
+    private static final String TEST_ADDRESS = "http://localhost:5000/api/invoker/v1";
     //    private static final String SERVER_ADDRESS = "localhost:7529/api";
     private static final OkHttpClient CLIENT = new OkHttpClient();
 

@@ -8,11 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author gyyst
- * @Description
- * @Create by 2023/2/3 17:18
- */
 
 @Configuration
 @Data

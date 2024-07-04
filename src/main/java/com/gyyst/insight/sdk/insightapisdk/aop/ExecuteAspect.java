@@ -13,11 +13,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author gyyst
- * @Description
- * @Create by 2023/10/3 15:20
- */
+
 @Aspect
 @Component
 public class ExecuteAspect {
@@ -36,14 +32,14 @@ public class ExecuteAspect {
 
     @Before("@annotation(com.gyyst.insight.sdk.insightapisdk.annotation.Sign)")
     public void sign() {
-        synchronized (insightApiClient) {
-            Auth auth = insightApiClient.getAuth();
-            long nonce;
-            do {
-                nonce = RandomUtil.randomLong();
-            } while (nonceCache.getIfPresent(nonce) == null);
-            nonceCache.put(nonce, Boolean.TRUE);
-            auth.sign(nonce, LocalDateTime.now());
-        }
+        insightApiClient.init();
+        Auth auth = insightApiClient.getAuth().get();
+        long nonce;
+        do {
+            nonce = RandomUtil.randomLong();
+        } while (nonceCache.getIfPresent(nonce) == null);
+        nonceCache.put(nonce, Boolean.TRUE);
+        auth.sign(nonce, LocalDateTime.now());
+        insightApiClient.close();
     }
 }
